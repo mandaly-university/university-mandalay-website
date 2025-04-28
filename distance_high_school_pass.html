@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ဝင့်ခွင့်ရမေဂျာများ | Yadanabon University</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Enhanced styles for high school pass page */
+        .result-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .result-card:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(5deg) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .result-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .result-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .result-card:hover .result-card-header::after {
+            opacity: 1;
+        }
+
+        .result-card-header h3 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-badge.available {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #2e7d32;
+            border: 1px solid rgba(46,125,50,0.1);
+            box-shadow: 0 2px 8px rgba(46,125,50,0.1);
+        }
+
+        .status-badge.pending {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            color: #e65100;
+            border: 1px solid rgba(230,81,0,0.1);
+            box-shadow: 0 2px 8px rgba(230,81,0,0.1);
+        }
+
+        .result-card-content {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, transparent, rgba(0,0,0,0.02));
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .download-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .download-button:hover {
+            background: linear-gradient(135deg, #0056b3, #004094);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+        }
+
+        .download-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .download-button:hover .download-icon {
+            transform: translateY(2px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 768px) {
+            .result-card-grid {
+                padding: 0.5rem;
+                gap: 1rem;
+            }
+
+            .result-card {
+                margin: 0.5rem 0;
+            }
+
+            .result-card:hover {
+                transform: translateY(-3px);
+            }
+
+            .download-button {
+                padding: 0.8rem 1.2rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .result-card {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            .result-card-header {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            }
+
+            .result-card-content {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            .status-badge {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            .download-button {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: #007bff;
+            }
+
+            /* Ensure better contrast without blur */
+            .status-badge.available {
+                background: #e8f5e9;
+            }
+
+            .status-badge.pending {
+                background: #fff3e0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Yadanabon University</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61558539611876">Facebook</a></li>
+                    <li><a href="https://ydnbu.edu.mm/">Official Website</a></li>
+                    <li><a href="exam_result.html" class="active">Exam Result</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ရတနာပုံတက္ကသိုလ် အဝေးသင်တန်း ဝင့်ခွင့်ရမေဂျာများ ၂၀၂၄ အောင်</h2>
+            <div class="result-card-grid">
+                <!-- Result Cards -->
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>မြန်မာစာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/1.myan_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အင်္ဂလိပ်စာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/2.eng_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ပထဝီဝင်</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/3.geog_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သမိုင်း</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/4.hist_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဒဿနိကဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/5.phil_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>စိတ်ပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/6.psy_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အရှေ့တိုင်းပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/7.os_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဥပဒေပညာ (BA Law)</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/8.law_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဓာတုဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/9.chem_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ရူပဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/10.phy_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သင်္ချာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/11.math_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သတ္တဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/12.zool_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ရုက္ခဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="distance/13.bot_ydp_ude_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>     
+
+     <!-- Main Content -->
+     <main>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ရတနာပုံတက္ကသိုလ် နေ့သင်တန်း ဝင့်ခွင့်ရမေဂျာများ ၂၀၂၄ အောင်</h2>
+            <div class="result-card-grid">
+                <!-- Result Cards -->
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>မြန်မာစာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/1.myan_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အင်္ဂလိပ်စာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/2.eng_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ပထဝီဝင်</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/3.geog_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သမိုင်း</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/4.hist_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဒဿနိကဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/5.phil_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>စိတ်ပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/6.psy_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အရှေ့တိုင်းပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/7.os_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဥပဒေပညာ (LLB)</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/8.LLB_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဥပဒေပညာ (BA Law)</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/9.BA Law_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>နိုင်ငံတကာဆက်ဆံရေးပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/10.ir_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>မနုဿဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/11.antho_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ရှေးဟောင်းသုတေသနပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/12.arch_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>  
+                
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>စာကြည့်တိုက်နှင့်သုတပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/13.lib_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဓာတုဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/14.chem_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ရူပဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/15.phy_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သင်္ချာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/16.math_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>သတ္တဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/17.zol_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ရုက္ခဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/18.bot_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဘူမိဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/19.geol_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ကုန်ထုတ်ဓာတုဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/20.ic_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ကွန်ပျူတာသိပ္ပံပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/21.cs_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ဇီဝဓာတုဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/22.bio chem_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အဏုဇီဝဗေဒ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/23.m bio_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>မြန်မာမှုပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/24.m study_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>စီးပွားရေးပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/25.ecos_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>မှတ်တမ်းနှင့်မော်ကွန်းစီမံခန့်ခွဲမှုပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/26.record_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>ပတ်ဝန်းကျင်ဆိုင်ရာပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/27.es_ydp_24.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>အားကစားပညာ</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <div class="result-card-content">
+                        <a href="day/ydp(23)_1872(48)_2024.pdf" 
+                           class="download-button" target="_blank">
+                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            Download Result
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>     
+
+    <script src="script.js"></script>
+</body>
+</html>

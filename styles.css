@@ -70,7 +70,7 @@ body {
 
 
 
-    background: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+    background: #f8f9fa;
 
 
 
@@ -79,6 +79,14 @@ body {
 
 
     line-height: 1.6;
+
+
+
+
+
+
+
+    color: #333;
 
 
 
@@ -118,7 +126,7 @@ header {
 
 
 
-    background: rgba(255, 255, 255, 0.98);
+    background: #1a237e;
 
 
 
@@ -126,7 +134,7 @@ header {
 
 
 
-    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
 
 
@@ -159,14 +167,6 @@ header {
 
 
     z-index: 1000;
-
-
-
-
-
-
-
-    backdrop-filter: blur(8px);
 
 
 
@@ -270,23 +270,7 @@ header {
 
 
 
-    background: linear-gradient(135deg, #007bff, #0056b3);
-
-
-
-
-
-
-
-    -webkit-background-clip: text;
-
-
-
-
-
-
-
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
 
 
 
@@ -311,6 +295,62 @@ header {
 
 
     letter-spacing: -0.5px;
+
+
+
+
+
+
+
+    display: flex;
+
+
+
+
+
+
+
+    align-items: center;
+
+
+
+
+
+
+
+    gap: 0.5rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.logo h1 i {
+
+
+
+
+
+
+
+    font-size: 1.6rem;
 
 
 
@@ -358,7 +398,7 @@ nav ul {
 
 
 
-    gap: 2.5rem;
+    gap: 2rem;
 
 
 
@@ -398,7 +438,7 @@ nav a {
 
 
 
-    color: #444;
+    color: #ffffff;
 
 
 
@@ -431,6 +471,62 @@ nav a {
 
 
     transition: color 0.3s ease;
+
+
+
+
+
+
+
+    display: flex;
+
+
+
+
+
+
+
+    align-items: center;
+
+
+
+
+
+
+
+    gap: 0.5rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav a i {
+
+
+
+
+
+
+
+    font-size: 1.1rem;
 
 
 
@@ -510,7 +606,7 @@ nav a::after {
 
 
 
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: #ffffff;
 
 
 
@@ -558,7 +654,15 @@ nav a.active {
 
 
 
-    color: #007bff;
+    color: #ffffff;
+
+
+
+
+
+
+
+    opacity: 0.9;
 
 
 
@@ -726,6 +830,142 @@ main {
 
 
 
+.page-title {
+
+
+
+
+
+
+
+    text-align: center;
+
+
+
+
+
+
+
+    margin-bottom: 3rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.page-title h2 {
+
+
+
+
+
+
+
+    color: #1a237e;
+
+
+
+
+
+
+
+    font-size: 2rem;
+
+
+
+
+
+
+
+    font-weight: 600;
+
+
+
+
+
+
+
+    margin-bottom: 0.5rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.page-title p {
+
+
+
+
+
+
+
+    color: #666;
+
+
+
+
+
+
+
+    font-size: 1.1rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Card Grid */
 
 
@@ -750,7 +990,7 @@ main {
 
 
 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 
 
 
@@ -758,7 +998,7 @@ main {
 
 
 
-    gap: 2rem;
+    gap: 1.5rem;
 
 
 
@@ -766,7 +1006,7 @@ main {
 
 
 
-    padding: 1.5rem 0;
+    padding: 1rem;
 
 
 
@@ -838,7 +1078,7 @@ main {
 
 
 
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 
 
@@ -878,7 +1118,7 @@ main {
 
 
 
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
 
 
@@ -886,151 +1126,7 @@ main {
 
 
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.card:after {
-
-
-
-
-
-
-
-    content: "";
-
-
-
-
-
-
-
-    position: absolute;
-
-
-
-
-
-
-
-    top: 0;
-
-
-
-
-
-
-
-    left: 0;
-
-
-
-
-
-
-
-    width: 100%;
-
-
-
-
-
-
-
-    height: 100%;
-
-
-
-
-
-
-
-    border-radius: 12px;
-
-
-
-
-
-
-
-    opacity: 0;
-
-
-
-
-
-
-
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-
-
-
-
-
-
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-
-
-
-
-
-
-
-    pointer-events: none;
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.card:hover:after {
-
-
-
-
-
-
-
-    opacity: 1;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 
 
 
@@ -1134,7 +1230,7 @@ main {
 
 
 
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.5s ease;
 
 
 
@@ -1166,7 +1262,103 @@ main {
 
 
 
-    transform: scale(1.08);
+    transform: scale(1.05);
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-badge {
+
+
+
+
+
+
+
+    position: absolute;
+
+
+
+
+
+
+
+    top: 1rem;
+
+
+
+
+
+
+
+    right: 1rem;
+
+
+
+
+
+
+
+    background: #1a237e;
+
+
+
+
+
+
+
+    color: white;
+
+
+
+
+
+
+
+    padding: 0.5rem 1rem;
+
+
+
+
+
+
+
+    border-radius: 20px;
+
+
+
+
+
+
+
+    font-weight: 500;
+
+
+
+
+
+
+
+    font-size: 0.9rem;
 
 
 
@@ -1206,7 +1398,7 @@ main {
 
 
 
-    background: linear-gradient(to bottom, #ffffff, #fafafa);
+    background: #ffffff;
 
 
 
@@ -1238,7 +1430,7 @@ main {
 
 
 
-    color: #1a1a1a;
+    color: #1a237e;
 
 
 
@@ -1374,6 +1566,14 @@ main {
 
 
 
+    gap: 0.5rem;
+
+
+
+
+
+
+
     padding: 0.75rem 1.5rem;
 
 
@@ -1382,7 +1582,7 @@ main {
 
 
 
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: #1a237e;
 
 
 
@@ -1422,15 +1622,7 @@ main {
 
 
 
-    transition: all 0.3s ease;
-
-
-
-
-
-
-
-    box-shadow: 0 2px 6px rgba(0,123,255,0.2);
+    transition: background-color 0.3s ease;
 
 
 
@@ -1462,7 +1654,7 @@ main {
 
 
 
-    background: linear-gradient(135deg, #0056b3, #004094);
+    background: #283593;
 
 
 
@@ -1470,7 +1662,7 @@ main {
 
 
 
-    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
 
 
 
@@ -1478,7 +1670,111 @@ main {
 
 
 
-    transform: translateY(-1px);
+
+
+
+
+
+
+
+
+/* Footer Styles */
+
+
+
+
+
+
+
+footer {
+
+
+
+
+
+
+
+    background: #1a237e;
+
+
+
+
+
+
+
+    color: white;
+
+
+
+
+
+
+
+    padding: 1.5rem 0;
+
+
+
+
+
+
+
+    margin-top: 3rem;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-container {
+
+
+
+
+
+
+
+    max-width: 1200px;
+
+
+
+
+
+
+
+    margin: 0 auto;
+
+
+
+
+
+
+
+    padding: 0 2rem;
+
+
+
+
+
+
+
+    text-align: center;
 
 
 
@@ -1526,7 +1822,23 @@ main {
 
 
 
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+
+
+
+
+
+
+
+        gap: 1.5rem;
+
+
+
+
+
+
+
+        padding: 0.75rem;
 
 
 
@@ -1582,6 +1894,126 @@ main {
 
 
 
+        gap: 1.25rem;
+
+
+
+
+
+
+
+        padding: 0.5rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content h3 {
+
+
+
+
+
+
+
+        font-size: 1.1rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content p {
+
+
+
+
+
+
+
+        font-size: 0.9rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-btn {
+
+
+
+
+
+
+
+        padding: 0.6rem 1.2rem;
+
+
+
+
+
+
+
+        font-size: 0.9rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    nav ul {
+
+
+
+
+
+
+
+        gap: 1.5rem;
+
+
+
+
+
+
+
     }
 
 
@@ -1630,6 +2062,22 @@ main {
 
 
 
+        gap: 1.25rem;
+
+
+
+
+
+
+
+        padding: 0.5rem;
+
+
+
+
+
+
+
     }
 
 
@@ -1638,7 +2086,239 @@ main {
 
 
 
+    .card {
 
+
+
+
+
+
+
+        max-width: 400px;
+
+
+
+
+
+
+
+        margin: 0 auto;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-image {
+
+
+
+
+
+
+
+        height: 200px;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content {
+
+
+
+
+
+
+
+        padding: 1.25rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content h3 {
+
+
+
+
+
+
+
+        font-size: 1.1rem;
+
+
+
+
+
+
+
+        margin-bottom: 0.5rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content p {
+
+
+
+
+
+
+
+        font-size: 0.9rem;
+
+
+
+
+
+
+
+        margin-bottom: 1rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-btn {
+
+
+
+
+
+
+
+        width: 100%;
+
+
+
+
+
+
+
+        justify-content: center;
+
+
+
+
+
+
+
+        padding: 0.75rem 1.5rem;
+
+
+
+
+
+
+
+        font-size: 0.95rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .page-title h2 {
+
+
+
+
+
+
+
+        font-size: 1.5rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .page-title p {
+
+
+
+
+
+
+
+        font-size: 1rem;
+
+
+
+
+
+
+
+    }
 
 
 
@@ -1806,6 +2486,70 @@ main {
 
 
 
+    .logo h1 {
+
+
+
+
+
+
+
+        font-size: 1.3rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .logo h1 i {
+
+
+
+
+
+
+
+        font-size: 1.2rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     nav ul {
 
 
@@ -1838,7 +2582,7 @@ main {
 
 
 
-        padding: 0.5rem 0;
+        padding: 0.25rem 0;
 
 
 
@@ -1878,7 +2622,23 @@ main {
 
 
 
-        display: block;
+        display: flex;
+
+
+
+
+
+
+
+        flex-direction: column;
+
+
+
+
+
+
+
+        align-items: center;
 
 
 
@@ -1910,7 +2670,7 @@ main {
 
 
 
-        background: #f8f9fa;
+        background: rgba(255, 255, 255, 0.1);
 
 
 
@@ -1918,7 +2678,7 @@ main {
 
 
 
-        border-radius: 4px;
+        border-radius: 6px;
 
 
 
@@ -1926,7 +2686,7 @@ main {
 
 
 
-        font-size: 0.75rem;
+        font-size: 0.7rem;
 
 
 
@@ -1934,7 +2694,7 @@ main {
 
 
 
-        white-space: nowrap;
+    }
 
 
 
@@ -1942,7 +2702,6 @@ main {
 
 
 
-        overflow: hidden;
 
 
 
@@ -1950,7 +2709,24 @@ main {
 
 
 
-        text-overflow: ellipsis;
+
+    nav a i {
+
+
+
+
+
+
+
+        font-size: 1rem;
+
+
+
+
+
+
+
+        margin-bottom: 0.15rem;
 
 
 
@@ -1990,7 +2766,7 @@ main {
 
 
 
-        background: #e9ecef;
+        background: rgba(255, 255, 255, 0.2);
 
 
 
@@ -2030,7 +2806,7 @@ main {
 
 
 
-        margin-top: 140px;
+        margin-top: 120px;
 
 
 
@@ -2078,7 +2854,7 @@ main {
 
 
 
-    nav ul {
+    .card-grid {
 
 
 
@@ -2086,7 +2862,15 @@ main {
 
 
 
-        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+
+
+
+
+
+
+        padding: 0.25rem;
 
 
 
@@ -2102,7 +2886,263 @@ main {
 
 
 
+    .card-image {
 
+
+
+
+
+
+
+        height: 180px;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content {
+
+
+
+
+
+
+
+        padding: 1rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content h3 {
+
+
+
+
+
+
+
+        font-size: 1rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-content p {
+
+
+
+
+
+
+
+        font-size: 0.85rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .card-btn {
+
+
+
+
+
+
+
+        padding: 0.4rem 0.2rem;
+
+
+
+
+
+
+
+        font-size: 0.65rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .header-container {
+
+
+
+
+
+
+
+        padding: 0.35rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .logo h1 {
+
+
+
+
+
+
+
+        font-size: 1.2rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    .logo h1 i {
+
+
+
+
+
+
+
+        font-size: 1.1rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    nav a {
+
+
+
+
+
+
+
+        padding: 0.4rem 0.2rem;
+
+
+
+
+
+
+
+        font-size: 0.65rem;
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    nav a i {
+
+
+
+
+
+
+
+        font-size: 0.9rem;
+
+
+
+
+
+
+
+        margin-bottom: 0.1rem;
+
+
+
+
+
+
+
+    }
 
 
 
@@ -2118,7 +3158,7 @@ main {
 
 
 
-        margin-top: 180px;
+        margin-top: 110px;
 
 
 
@@ -2230,7 +3270,7 @@ main {
 
 
 
-    h2 {
+    .page-title h2 {
 
 
 
@@ -2238,7 +3278,7 @@ main {
 
 
 
-        font-size: 1.5rem;
+        font-size: 1.75rem;
 
 
 

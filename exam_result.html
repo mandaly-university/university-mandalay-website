@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Results | Yadanabon University</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>စာမေးပွဲရလဒ်များ | ရတနာပုံတက္ကသိုလ်</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Enhanced styles for exam result page */
         .result-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             padding: 1rem;
             margin: 0 auto;
@@ -19,129 +20,109 @@
         }
 
         .result-card {
-            background: white;
-            border-radius: 15px;
+            background: #ffffff;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            transform-style: preserve-3d;
-            background: linear-gradient(135deg, #ffffff, #f5f5f5);
         }
 
         .result-card:hover {
-            transform: perspective(1000px) rotateX(10deg) rotateY(5deg) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .result-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-            pointer-events: none;
-        }
-
-        .result-card:hover::before {
-            transform: translateX(100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .result-card-header {
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            background: #1a237e;
+            color: white;
         }
 
         .result-card-header h3 {
-            color: #333;
+            color: #ffffff;
             font-size: 1.2rem;
             margin-bottom: 0.8rem;
             font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
         .status-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.4rem 1rem;
-            border-radius: 25px;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
         }
 
-        .status-badge.available {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            color: #2e7d32;
-            border: 1px solid rgba(46,125,50,0.1);
-        }
-
-        .status-badge.pending {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            color: #e65100;
-            border: 1px solid rgba(230,81,0,0.1);
+        .status-badge i {
+            font-size: 0.9rem;
         }
 
         .result-card-content {
             padding: 1.5rem;
-            background: linear-gradient(135deg, transparent, rgba(0,0,0,0.02));
+            background: #ffffff;
         }
 
         .download-button {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 0.8rem;
-            background: linear-gradient(135deg, #007bff, #0056b3);
+            background: #1a237e;
             color: white;
             text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding: 0.875rem 1.5rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0,123,255,0.2);
         }
 
         .download-button:hover {
-            background: linear-gradient(135deg, #0056b3, #004094);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+            background: #283593;
         }
 
-        .download-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            transition: transform 0.3s ease;
+        .download-button i {
+            font-size: 1.1rem;
         }
 
-        .download-button:hover .download-icon {
-            transform: translateY(2px);
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a237e;
         }
 
-        @media (max-width: 768px) {
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 1024px) {
             .result-card-grid {
-                padding: 0.5rem;
-                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .result-card-grid {
+                grid-template-columns: 1fr;
             }
 
-            .result-card {
-                margin: 0.5rem 0;
-            }
-
-            .result-card:hover {
-                transform: translateY(-3px);
+            .result-card-header h3 {
+                font-size: 1.1rem;
             }
 
             .download-button {
-                padding: 0.8rem 1.2rem;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -151,315 +132,51 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1>Yadanabon University</h1>
+                <h1><i class="fas fa-university"></i> ရတနာပုံတက္ကသိုလ်</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="https://www.facebook.com/profile.php?id=61558539611876">Facebook</a></li>
-                    <li><a href="https://ydnbu.edu.mm/">Official Website</a></li>
-                    <li><a href="exam_result.html" class="active">Exam Result</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> မူလစာမျက်နှာ</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61558539611876"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://ydnbu.edu.mm/"><i class="fas fa-globe"></i> တရားဝင်ဝက်ဘ်ဆိုဒ်</a></li>
+                    <li><a href="exam_result.html" class="active"><i class="fas fa-file-alt"></i> စာမေးပွဲရလဒ်</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
-    <main>
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">နေ့သင်တန်း အောင်စာရင်းများ ၂၀၂၄-၂၀၂၅ ပညာသင်နှစ်</h2>
-            <div class="result-card-grid">
-                <!-- Rest of the distance learning cards -->
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>တတိယနှစ် ၂၀၂၄ - ၂၀၂၅ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="####" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Not Available
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဂုဏ်ထူးတန်း ပထမနှစ်၂၀၂၄ - ၂၀၂၅ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="####" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Not Available
-                        </a>
-                    </div>
-                </div>
-        </main>
 
     <main>
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">အဝေးသင်တန်း အောင်စာရင်းများ ၂၀၂၄ ပညာသင်နှစ်</h2>
+            <div class="section-title">
+                <h2>နေ့သင်တန်း အောင်စာရင်းများ</h2>
+                <p>၂၀၂၄-၂၀၂၅ ပညာသင်နှစ်</p>
+            </div>
             <div class="result-card-grid">
-                <!-- Rest of the distance learning cards -->
                 <div class="result-card">
                     <div class="result-card-header">
-                        <h3>ပဉ္စမနှစ် ၂၀၂၄ အဝေးသင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
+                        <h3>တတိယနှစ် ၂၀၂၄-၂၀၂၅ ပညာသင်နှစ် နေ့သင်တန်း</h3>
+                        <span class="status-badge"><i class="fas fa-check-circle"></i> ရရှိနိုင်ပါပြီ</span>
                     </div>
                     <div class="result-card-content">
-                        <a href="distance_result/5-law.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
+                        <a href="distance_result/5-law.pdf" class="download-button" target="_blank">
+                            <i class="fas fa-download"></i> ရလဒ်ကို ဒေါင်းလုဒ်လုပ်ရန်
                         </a>
                     </div>
                 </div>
 
                 <div class="result-card">
                     <div class="result-card-header">
-                        <h3>စတုတ္ထနှစ် ၂၀၂၄ အဝေးသင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
+                        <h3>ဂုဏ်ထူးတန်း ပထမနှစ် ၂၀၂၄-၂၀၂၅ နေ့သင်တန်း</h3>
+                        <span class="status-badge"><i class="fas fa-check-circle"></i> ရရှိနိုင်ပါပြီ</span>
                     </div>
                     <div class="result-card-content">
-                        <a href="distance_result/4th-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>တတိယနှစ် ၂၀၂၄ အဝေးသင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="distance_result/3rd-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဒုတိယနှစ် ၂၀၂၄ အဝေးသင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="distance_result/2nd-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ပထမနှစ် ၂၀၂၄ အဝေးသင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="distance_result/1st-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
+                        <a href="distance_result/4th-year.pdf" class="download-button" target="_blank">
+                            <i class="fas fa-download"></i> ရလဒ်ကို ဒေါင်းလုဒ်လုပ်ရန်
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </main>      
-
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">နေ့သင်တန်း အောင်စာရင်းများ ၂၀၂၃-၂၀၂၄ ပညာသင်နှစ်</h2>
-            <div class="result-card-grid">
-                <!-- Result Cards -->
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ပထမနှစ်မဟာ(ဝိဇ္ဇာ၊ သိပ္ပံ၊ ဥပဒေ) ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/M1.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဒုတိယနှစ်မဟာ(ဝိဇ္ဇာ၊ သိပ္ပံ၊ ဥပဒေ) ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/M2.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>မဟာအရည်အချင်းစစ်သင်တန်း ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/Q.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>မဟာဥပဒေ ဒုတိယနှစ် (ကျမ်းစာအုပ်ပြုစုခွင့်) ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/M2-Law.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>စတုတ္ထနှစ် ဥပဒေ ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/4th-Law.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>စတုတ္ထနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/4th-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဂုဏ်ထူးတန်း ပထမနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/H1.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဂုဏ်ထူးတန်း ဒုတိယနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/H2.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဂုဏ်ထူးတန်း တတိယနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/H3.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>တတိယနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-                        <a href="day_result/3rd-year.pdf" 
-                           class="download-button" target="_blank">
-                            <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                            Download Result
-                        </a>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="result-card-header">
-                        <h3>ဒုတိယနှစ် ၂၀၂၄ နေ့သင်တန်း</h3>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="result-card-content">
-       
+    </main>
+</body>
+</html>

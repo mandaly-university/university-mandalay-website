@@ -113,24 +113,38 @@
 
         @media (max-width: 600px) {
             .result-card-grid {
-                grid-template-columns: repeat(2, 1fr);
+                display: grid !important;
+                grid-template-columns: 1fr !important; /* 1 card per row */
+                gap: 1rem !important;
+                padding: 0.5rem !important;
             }
 
             .result-card {
-                max-width: 100%;
-                width: 100%;
-                margin: 0;
-                min-width: 0;
-                box-sizing: border-box;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            .result-card-header,
+            .result-card-content {
+                padding: 1rem !important;
             }
 
             .result-card-header h3 {
-                font-size: 1.1rem;
+                font-size: 1.1rem !important;
             }
 
             .download-button {
-                width: 100%;
-                justify-content: center;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                margin-top: 0.5rem !important;
+                justify-content: center !important;
+                font-size: 0.95rem !important;
+                padding: 0.75rem 0.5rem !important;
+                display: flex !important;
+                align-items: center !important;
             }
         }
     </style>

@@ -113,7 +113,15 @@
 
         @media (max-width: 600px) {
             .result-card-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .result-card {
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                min-width: 0;
+                box-sizing: border-box;
             }
 
             .result-card-header h3 {
@@ -159,7 +167,7 @@
                     </div>
                     <div class="result-card-content">
                         <a href="distance_result/5-law.pdf" class="download-button" target="_blank">
-                            <i class="fas fa-download"></i> ရလဒ်မထွက်သေးပါ
+                            <i class="fas fa-download"></i> ရလဒ်ကို ဒေါင်းလုဒ်လုပ်ရန်
                         </a>
                     </div>
                 </div>
@@ -171,7 +179,7 @@
                     </div>
                     <div class="result-card-content">
                         <a href="distance_result/4th-year.pdf" class="download-button" target="_blank">
-                            <i class="fas fa-download"></i> ရလဒ်မထွက်သေးပါ
+                            <i class="fas fa-download"></i> ရလဒ်ကို ဒေါင်းလုဒ်လုပ်ရန်
                         </a>
                     </div>
                 </div>

@@ -3,19 +3,34 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --primary-color: #4F46E5;
+    --primary-light: #6366F1;
+    --primary-dark: #4338CA;
+    --background: #F9FAFB;
+    --surface: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 body {
-    background: #f8f9fa;
+    background: var(--background);
     line-height: 1.6;
-    color: #333;
+    color: var(--text-primary);
+    font-size: 16px;
 }
 
 /* Header Styles */
 header {
-    background: #1a237e;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
     position: fixed;
     width: 100%;
     top: 0;
@@ -23,7 +38,7 @@ header {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
@@ -32,9 +47,9 @@ header {
 }
 
 .logo h1 {
-    color: #ffffff;
+    color: var(--primary-color);
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
@@ -53,11 +68,11 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-primary);
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -80,8 +95,7 @@ nav a::after {
 
 nav a:hover,
 nav a.active {
-    color: #ffffff;
-    opacity: 0.9;
+    color: var(--primary-color);
 }
 
 nav a:hover::after,
@@ -97,7 +111,7 @@ main {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -108,116 +122,131 @@ main {
 }
 
 .page-title h2 {
-    color: #1a237e;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .page-title p {
-    color: #666;
-    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Card Grid */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     padding: 1rem;
 }
 
 /* Card Styles */
 .card {
-    background: #ffffff;
-    border-radius: 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
 .card-image {
     position: relative;
     overflow: hidden;
-    height: 220px;
+    height: 240px;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover .card-image img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .card-badge {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: #1a237e;
+    background: var(--primary-color);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: 500;
     font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .card-content {
-    padding: 1.75rem;
-    background: #ffffff;
+    padding: 2rem;
+    background: transparent;
 }
 
 .card-content h3 {
-    color: #1a237e;
-    font-size: 1.25rem;
+    color: var(--text-primary);
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     line-height: 1.4;
 }
 
 .card-content p {
-    color: #666;
-    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .card-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: #1a237e;
+    padding: 0.875rem 1.75rem;
+    background: var(--primary-color);
     color: white;
-    border-radius: 6px;
+    border-radius: 12px;
     font-weight: 500;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .card-btn:hover {
-    background: #283593;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 /* Footer Styles */
 footer {
-    background: #1a237e;
-    color: white;
-    padding: 1.5rem 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
+    padding: 2rem 0;
     margin-top: 3rem;
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
     text-align: center;
@@ -228,32 +257,39 @@ footer {
     .card-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
-        padding: 0.75rem;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-        padding: 0.5rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .card-content h3 {
+    .page-title h2 {
+        font-size: 2rem;
+    }
+
+    .page-title p {
         font-size: 1.1rem;
     }
+}
 
-    .card-content p {
-        font-size: 0.9rem;
-    }
-
-    .card-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+@media (max-width: 480px) {
+    .header-container {
+        padding: 1rem;
     }
 
     nav ul {
-        gap: 1.5rem;
+        gap: 1rem;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
     }
 }
 

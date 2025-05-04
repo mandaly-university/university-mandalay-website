@@ -6,145 +6,205 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>စာမေးပွဲရလဒ်များ | ရတနာပုံတက္ကသိုလ်</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Enhanced styles for exam result page */
+        .result-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .result-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .result-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .result-card-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            padding: 1rem;
-            margin: 0 auto;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .result-card {
-            background: #ffffff;
-            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
         .result-card-header {
-            padding: 1.5rem;
-            background: #1a237e;
+            padding: 1.75rem;
+            background: var(--primary-color);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            opacity: 0.9;
         }
 
         .result-card-header h3 {
             color: #ffffff;
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         .status-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1.25rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
             background: rgba(255, 255, 255, 0.2);
             color: white;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 1;
         }
 
         .status-badge i {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .result-card-content {
-            padding: 1.5rem;
-            background: #ffffff;
+            padding: 2rem;
+            background: transparent;
         }
 
         .download-button {
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            background: #1a237e;
+            background: var(--primary-color);
             color: white;
             text-decoration: none;
-            padding: 0.875rem 1.5rem;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
             font-weight: 500;
+            width: 100%;
+            justify-content: center;
         }
 
         .download-button:hover {
-            background: #283593;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .download-button i {
             font-size: 1.1rem;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1a237e;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: #666;
-            font-size: 1.1rem;
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: var(--glass-border);
+            margin: 4rem auto;
+            max-width: 1400px;
         }
 
         @media (max-width: 1024px) {
             .result-card-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .result-container {
+                padding: 1.5rem;
+            }
+
+            .result-header {
+                padding: 1.5rem;
+            }
+
+            .result-header h1 {
+                font-size: 2rem;
+            }
+
+            .result-header p {
+                font-size: 1.1rem;
+            }
+
             .result-card-grid {
-                display: grid !important;
-                grid-template-columns: 1fr !important; /* 1 card per row */
-                gap: 1rem !important;
-                padding: 0.5rem !important;
-            }
-
-            .result-card {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                margin: 0 !important;
-                box-sizing: border-box !important;
-            }
-
-            .result-card-header,
-            .result-card-content {
-                padding: 1rem !important;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .result-card-header h3 {
-                font-size: 1.1rem !important;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .result-container {
+                padding: 1rem;
+            }
+
+            .result-header {
+                padding: 1rem;
+            }
+
+            .result-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .result-card-content {
+                padding: 1.5rem;
             }
 
             .download-button {
-                width: 100% !important;
-                box-sizing: border-box !important;
-                margin-top: 0.5rem !important;
-                justify-content: center !important;
-                font-size: 0.95rem !important;
-                padding: 0.75rem 0.5rem !important;
-                display: flex !important;
-                align-items: center !important;
+                padding: 0.875rem 1.5rem;
             }
         }
     </style>
@@ -168,9 +228,9 @@
     </header>
 
     <main>
-        <div class="container">
-            <div class="section-title">
-                <h2>နေ့သင်တန်း အောင်စာရင်းများ</h2>
+        <div class="result-container">
+            <div class="result-header">
+                <h1>နေ့သင်တန်း အောင်စာရင်းများ</h1>
                 <p>၂၀၂၄-၂၀၂၅ ပညာသင်နှစ်</p>
             </div>
             <div class="result-card-grid">
@@ -200,5 +260,7 @@
             </div>
         </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

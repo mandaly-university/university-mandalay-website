@@ -7,7 +7,7 @@
     --light-bg: #f5f7fa;  /* Light background */
     --white: #ffffff;
     --border-color: #e0e0e0;
-    --transition-speed: 0.2s;
+    --transition-speed: 0.08s; /* Ultra-smooth transitions */
 }
 
 body {
@@ -17,12 +17,23 @@ body {
     background-color: var(--light-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    contain: content;
+    overscroll-behavior: none; /* Prevent scroll bounce */
 }
 
 .navbar {
     background-color: var(--primary-color) !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    contain: layout style paint;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-brand {
@@ -30,16 +41,20 @@ body {
     font-size: 1.5rem;
     color: var(--white) !important;
     transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .navbar-brand:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) translateZ(0);
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    transform: translateZ(0);
+    will-change: transform, color;
 }
 
 .nav-link::after {
@@ -51,7 +66,8 @@ body {
     height: 2px;
     background-color: var(--white);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0);
+    will-change: width, transform;
 }
 
 .nav-link:hover::after,
@@ -69,11 +85,16 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
     background-color: var(--white);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
     will-change: transform, box-shadow;
+    contain: layout style paint;
+    content-visibility: auto;
 }
 
 .card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
@@ -83,33 +104,40 @@ body {
     border-bottom: none;
     font-weight: 600;
     transition: background-color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
 }
 
 .badge {
     background-color: var(--accent-color) !important;
     color: var(--white);
     transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .badge:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
 }
 
 .list-group-item {
     border: 1px solid var(--border-color);
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
     will-change: background-color, transform;
+    contain: content;
+    content-visibility: auto;
 }
 
 .list-group-item:hover {
     background-color: var(--light-bg);
-    transform: translateX(4px);
+    transform: translateX(4px) translateZ(0);
 }
 
 .list-group-item a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color;
 }
 
 .list-group-item a:hover {
@@ -120,12 +148,15 @@ body {
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
     will-change: background-color, transform;
+    contain: content;
+    content-visibility: auto;
 }
 
 .announcement-item:hover, .news-item:hover {
     background-color: var(--light-bg);
-    transform: translateX(4px);
+    transform: translateX(4px) translateZ(0);
 }
 
 .announcement-item:last-child, .news-item:last-child {
@@ -134,16 +165,19 @@ body {
 
 .news-item img {
     transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
     will-change: transform;
+    backface-visibility: hidden;
 }
 
 .news-item:hover img {
-    transform: scale(1.02);
+    transform: scale(1.02) translateZ(0);
 }
 
 .text-muted {
     color: #546e7a !important;
     transition: color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color;
 }
 
 /* Responsive adjustments */
@@ -169,51 +203,196 @@ body {
     }
 }
 
-/* Animation keyframes */
+/* Super Smooth Animation keyframes */
 @keyframes fadeIn {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(10px) translateZ(0);
+        filter: blur(5px);
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) translateZ(0);
+        filter: blur(0);
     }
 }
 
 .news-item {
-    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: fadeIn 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: translateZ(0);
+    will-change: opacity, transform, filter;
+    contain: content;
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .news-item:nth-child(2) {
-    animation-delay: 0.1s;
+    animation-delay: 0.03s;
 }
 
 .news-item:nth-child(3) {
-    animation-delay: 0.2s;
+    animation-delay: 0.06s;
 }
 
 @keyframes badgePulse {
-  0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
-  70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+    0% { 
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
+        transform: scale(1) translateZ(0);
+    }
+    50% { 
+        box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+        transform: scale(1.05) translateZ(0);
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+        transform: scale(1) translateZ(0);
+    }
 }
 
 .badge-green {
-  background-color: #28a745 !important;
-  color: #fff !important;
-  animation: badgePulse 1.5s infinite;
+    background-color: #28a745 !important;
+    color: #fff !important;
+    animation: badgePulse 1s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    will-change: box-shadow, transform;
+    contain: content;
+    backface-visibility: hidden;
 }
 
 .animated-link {
-  color: #007bff;
-  font-weight: bold;
-  position: relative;
-  animation: badgePulse 1.5s infinite;
-  transition: none;
+    color: #007bff;
+    font-weight: bold;
+    position: relative;
+    animation: badgePulse 1s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
+    transform: translateZ(0);
+    will-change: color, transform;
+    contain: content;
+    backface-visibility: hidden;
 }
-.animated-link:hover {
-  color: #28a745;
-  text-decoration: underline;
-  /* No transform or scale, just color and underline */
+
+/* Enhanced GPU acceleration for images */
+img {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+    contain: content;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Optimize scrolling performance */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    contain: content;
+    overscroll-behavior: none;
+}
+
+/* Reduce paint operations */
+* {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    contain: content;
+}
+
+/* Add performance optimizations for cards */
+.card {
+    contain: layout style paint;
+    content-visibility: auto;
+    transform: translateZ(0);
+    will-change: transform;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize list items */
+.list-group-item {
+    contain: content;
+    content-visibility: auto;
+    transform: translateZ(0);
+    will-change: transform;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize announcement items */
+.announcement-item {
+    contain: content;
+    content-visibility: auto;
+    transform: translateZ(0);
+    will-change: transform;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add smooth hover effects */
+.hover-effect {
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.hover-effect:hover {
+    transform: scale(1.02) translateZ(0);
+}
+
+/* Optimize text rendering */
+h1, h2, h3, h4, h5, h6, p {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth page transitions */
+.page-transition {
+    animation: fadeIn 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: translateZ(0);
+    will-change: opacity, transform;
+    contain: content;
+}
+
+/* Bottom Navigation Bar for Mobile */
+.bottom-nav {
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar {
+    display: none !important;
+  }
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+    z-index: 2000;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--border-color);
+  }
+  .bottom-nav a {
+    flex: 1;
+    text-align: center;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.5rem 0 0.2rem 0;
+    transition: color 0.1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottom-nav a.active, .bottom-nav a:active, .bottom-nav a:focus {
+    color: var(--accent-color);
+  }
+  .bottom-nav svg {
+    display: block;
+    margin: 0 auto 2px auto;
+    font-size: 1.3rem;
+    width: 1.3em;
+    height: 1.3em;
+  }
 } 

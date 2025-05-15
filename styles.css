@@ -22,7 +22,7 @@ body {
     font-family: 'Inter', 'Pyidaungsu', 'Myanmar3', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-bg);
+    background: var(--light-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -533,4 +533,24 @@ h1, h2, h3, h4, h5, h6, p {
 .container {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+}
+
+.dark-mode table,
+.dark-mode .table,
+.dark-mode td {
+  background: #232946 !important;
+  color: #f3f4f6 !important;
+  border-color: #393e5c !important;
+  box-shadow: none !important;
+}
+
+.dark-mode ul,
+.dark-mode ol,
+.dark-mode li,
+.dark-mode .list-group,
+.dark-mode .list-group-item {
+  background: #232946 !important;
+  color: #f3f4f6 !important;
+  border-color: #393e5c !important;
+  box-shadow: none !important;
 } 

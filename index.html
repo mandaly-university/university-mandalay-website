@@ -8,6 +8,10 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+    <div class="theme-switch" id="themeSwitch" title="Toggle light/dark mode">
+      <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+      <span id="themeLabel">အလင်း</span>
+    </div>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -38,7 +42,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="container my-4">
+    <main class="container my-4 page-transition">
         <div class="row">
             <!-- Announcements Section -->
             <div class="col-md-8">
@@ -75,6 +79,36 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Theme switch logic
+      const themeSwitch = document.getElementById('themeSwitch');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeLabel = document.getElementById('themeLabel');
+      function setTheme(dark) {
+        if (dark) {
+          document.body.classList.add('dark-mode');
+          themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.752 15.002A9.718 9.718 0 0112 21c-5.523 0-10-4.477-10-10 0-4.418 2.865-8.166 6.839-9.542a1 1 0 01.99 1.32A7 7 0 0019 17a1 1 0 01.752 1.002z" />';
+          themeLabel.textContent = 'အမှောင်';
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+          themeLabel.textContent = 'အလင်း';
+        }
+      }
+      function getPref() {
+        return localStorage.getItem('theme') === 'dark';
+      }
+      function setPref(dark) {
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      }
+      // Init
+      setTheme(getPref() || (window.matchMedia('(prefers-color-scheme: dark)').matches));
+      themeSwitch.onclick = function() {
+        const dark = !document.body.classList.contains('dark-mode');
+        setTheme(dark);
+        setPref(dark);
+      };
+    </script>
     <!-- Bottom Navigation Bar (Mobile Only) -->
     <nav class="bottom-nav d-lg-none">
       <a href="index.html" class="active" title="မူလစာမျက်နှာ">

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>စာမေးပွဲရလဒ်များ - ရတနာပုံတက္ကသိုလ်</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading"></div>
+
+    <!-- Theme Switch -->
+    <div class="theme-switch" onclick="toggleTheme()">
+        <i class="bi bi-moon-fill"></i>
+        <span>Dark Mode</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-mortarboard-fill me-2"></i>ရတနာပုံတက္ကသိုလ်
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">မူလစာမျက်နှာ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admission.html">ဝင်ခွင့်ရ‌မေဂျာများ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="exam-results.html">စာမေးပွဲရလဒ်များ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center" data-aos="fade-up">
+                <h1 class="hero-title">စာမေးပွဲရလဒ်များ</h1>
+                <p class="hero-subtitle">ရတနာပုံတက္ကသိုလ်၏ စာမေးပွဲရလဒ်များကို ကြည့်ရှုရန်</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-4 page-transition">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- Search Section -->
+                <div class="card mb-4" data-aos="fade-up">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">
+                            <i class="bi bi-search me-2"></i>ရလဒ်ရှာဖွေရန်
+                        </h5>
+                        <form>
+    
+                            <div class="mb-3">
+                                <label for="examYear" class="form-label">စာမေးပွဲခုနှစ်</label>
+                                <select class="form-select" id="examYear">
+                                    <option selected>စာမေးပွဲခုနှစ်ကို ရွေးချယ်ပါ</option>
+                                    <option value="2024">2025</option>
+                                    <option value="2022">2024</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-search me-2"></i>ရလဒ်ရှာဖွေရန်
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            
+
+                <!-- 2024-2025 day Results Section -->
+                <div class="card" data-aos="fade-up">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-text me-2"></i>၂၀၂၄-၂၀၂၅ ပညာသင်နှစ် နေ့သင်တန်း စာမေးပွဲအောင်စာရင်း
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="100">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပထမနှစ် ဂုဏ်ထူးတန်း စာမေးပွဲရလဒ်များ
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2025-05-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2025/H1.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>တတိယနှစ် စာမေးပွဲရလဒ်များ
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2025-05-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2025/Third-Year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Main Content -->
+    <main class="container my-4 page-transition">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- 2024 distance Results Section -->
+                <div class="card" data-aos="fade-up">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-text me-2"></i>၂၀၂၄ ပညာသင်နှစ် အဝေးသင်-သင်တန်း စာမေးပွဲအောင်စာရင်း
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="100">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပထမနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-05-15</small>
+                                </div>
+                                <a href="အဝေးသင်တန်းအောင်စာရင်းများ/2024/1st-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ဒုတိယနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-05-15</small>
+                                </div>
+                                <a href="အဝေးသင်တန်းအောင်စာရင်းများ/2024/2nd-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>တတိယနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-05-15</small>
+                                </div>
+                                <a href="အဝေးသင်တန်းအောင်စာရင်းများ/2024/3rd-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>စတုတ္ထနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-05-15</small>
+                                </div>
+                                <a href="အဝေးသင်တန်းအောင်စာရင်းများ/2024/4th-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပဉ္စမနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-05-15</small>
+                                </div>
+                                <a href="အဝေးသင်တန်းအောင်စာရင်းများ/2024/5th-year" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+                            <!-- Main Content -->
+    <main class="container my-4 page-transition">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- 2023-2024 day Results Section -->
+                <div class="card" data-aos="fade-up">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-text me-2"></i>၂၀၂၃-၂၀၂၄ ပညာသင်နှစ် နေ့သင်တန်း စာမေးပွဲအောင်စာရင်း
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="100">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>စတုတ္ထနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/4th-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>စတုတ္ထနှစ် ဥပဒေအောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/4th-Law.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>တတိယနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/3rd-yearN.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>တတိယနှစ်ဂုဏ်ထူးတန်းအောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/H3.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ဒုတိယနှစ်ဂုဏ်ထူးတန်းအောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/H2.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပထမနှစ်ဂုဏ်ထူးတန်းအောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/H1.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပထမနှစ်မဟာ(ဝိဇ္ဇာ၊ သိပ္ပံ၊ ဥပဒေ) အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/M1.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>မဟာဥပဒေ ဒုတိယနှစ်သင်တန်း(ဘွဲ့)စာမေးပွဲအတွက် ကျမ်းစာအုပ်ပြုစုခွင့် ရရှိသူများစာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/M2-Law.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ဒုတိယနှစ်မဟာ(ဝိဇ္ဇာ၊ သိပ္ပံ၊ ဥပဒေ) အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/M2.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပဉ္စမနှစ်(ဥပဒေ) အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/5th-Law.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>မဟာအရည်အချင်းစစ်သင်တန်း အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/Q.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ပထမနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/first-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div>
+                                    <h6 class="mb-1">
+                                        <i class="bi bi-calendar-check me-2"></i>ဒုတိယနှစ်အောင်စာရင်း
+                                    </h6>
+                                    <small class="text-muted">ထုတ်ပြန်သည့်ရက်စွဲ: 2024-11-15</small>
+                                </div>
+                                <a href="နေ့သင်တန်းအောင်စာရင်းများ/2023-2024/second-year.pdf" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                    <i class="bi bi-eye me-1"></i>ကြည့်ရှုရန်
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>
+                        <i class="bi bi-mortarboard-fill me-2"></i>ရတနာပုံတက္ကသိုလ်
+                    </h5>
+                    <p>ပညာရေးတွင် ဦးဆောင်သူ၊ အနာဂတ်ကို ဖော်ဆောင်သူ</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>ဆက်သွယ်ရန်</h5>
+                    <p>
+                        <i class="bi bi-telephone me-2"></i>ဖုန်း: coming soon....<br>
+                        <i class="bi bi-envelope me-2"></i>အီးမေးလ်: ydnbu.edu.mm
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Loading Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const loading = document.querySelector('.loading');
+            const hasVisited = localStorage.getItem('hasVisited');
+            
+            if (!hasVisited) {
+                loading.classList.add('show');
+                localStorage.setItem('hasVisited', 'true');
+                
+                window.addEventListener('load', () => {
+                    loading.classList.remove('show');
+                });
+            }
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeSwitch = document.querySelector('.theme-switch');
+            const icon = themeSwitch.querySelector('i');
+            const text = themeSwitch.querySelector('span');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('bi-moon-fill', 'bi-sun-fill');
+                text.textContent = 'Light Mode';
+            } else {
+                icon.classList.replace('bi-sun-fill', 'bi-moon-fill');
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        // Active Navigation Link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html> 
